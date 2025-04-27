@@ -8,6 +8,7 @@
  */
 
 using System;
+using Avalonia.Media;
 
 namespace RtfDomParser
 {
@@ -182,7 +183,7 @@ namespace RtfDomParser
                 {
                     if (r >= 0 && g >= 0 && b >= 0)
                     {
-                        System.Drawing.Color c = System.Drawing.Color.FromArgb(255, r, g, b);
+                        Color c = Color.FromArgb(255, (byte)r, (byte)g, (byte)b);
                         myColorTable.Add(c);
                         r = -1;
                         g = -1;
@@ -193,7 +194,7 @@ namespace RtfDomParser
             if (r >= 0 && g >= 0 && b >= 0)
             {
                 // read the last color
-                System.Drawing.Color c = System.Drawing.Color.FromArgb(255, r, g, b);
+                Color c = Color.FromArgb(255, (byte)r, (byte)g, (byte)b);
                 myColorTable.Add(c);
             }
         }

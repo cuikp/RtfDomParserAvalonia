@@ -7,11 +7,10 @@
  * 
  */
 
+using Avalonia.Media;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Drawing ;
-using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
 namespace RtfDomParser
@@ -50,15 +49,14 @@ namespace RtfDomParser
             set { _Bottom = value; }
         }
 
-        private DashStyle _Style = DashStyle.Solid;
-        [DefaultValue(DashStyle.Solid)]
-        public DashStyle Style
+        private IDashStyle _Style = DashStyle.Dash;
+        public IDashStyle Style
         {
             get { return _Style; }
             set { _Style = value; }
         }
 
-        private Color _Color = Color.Black;
+        private Color _Color = Colors.Black;
         [DefaultValue(typeof( Color ) , "Black")]
         public Color Color
         {

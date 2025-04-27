@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtfDomParser", "RtfDomParser\RtfDomParser.csproj", "{D35F9B37-CF93-48AE-9A1A-3A99930F04FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RtfDomParserAv", "RtfDomParserAvalonia\RtfDomParserAv.csproj", "{D35F9B37-CF93-48AE-9A1A-3A99930F04FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

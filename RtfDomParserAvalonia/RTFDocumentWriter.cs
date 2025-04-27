@@ -8,7 +8,7 @@
  */
 
 
-
+using Avalonia.Media;
 using System;
 using System.Collections ;
 //using DCSoft.Drawing ;
@@ -206,23 +206,23 @@ namespace RtfDomParser
                 }
             }
         }
-		public void WriteBorderLineDashStyle( System.Drawing.Drawing2D.DashStyle style )
+		public void WriteBorderLineDashStyle(DashStyle style )
 		{
 			if( bolCollectionInfo == false )
 			{
-				if( style == System.Drawing.Drawing2D.DashStyle.Dot )
+				if( style == DashStyle.Dot )
 				{
 					this.WriteKeyword("brdrdot");
 				}
-				else if( style == System.Drawing.Drawing2D.DashStyle.DashDot )
+				else if( style == DashStyle.DashDot )
 				{
 					this.WriteKeyword("brdrdashd");
 				}
-				else if( style == System.Drawing.Drawing2D.DashStyle.DashDotDot )
+				else if( style == DashStyle.DashDotDot )
 				{
 					this.WriteKeyword("brdrdashdd");
 				}
-				else if( style == System.Drawing.Drawing2D.DashStyle.Dash )
+				else if( style == DashStyle.Dash )
 				{
 					this.WriteKeyword("brdrdash");
 				}
@@ -326,7 +326,7 @@ namespace RtfDomParser
 				myWriter.WriteRaw(";");
 				for( int iCount = 0 ; iCount < myColorTable.Count ; iCount ++ )
 				{
-					System.Drawing.Color c = myColorTable[ iCount ] ;
+					Color c = myColorTable[ iCount ] ;
 					myWriter.WriteKeyword( "red" + c.R );
 					myWriter.WriteKeyword( "green" + c.G );
 					myWriter.WriteKeyword( "blue" + c.B );
@@ -673,7 +673,7 @@ namespace RtfDomParser
 		/// write font format
 		/// </summary>
 		/// <param name="font">font</param>
-		public void WriteFont( System.Drawing.Font font )
+		public void WriteFont(FontFamily font )
 		{
 			if( font == null )
 			{
@@ -690,23 +690,23 @@ namespace RtfDomParser
 				{
 					myWriter.WriteKeyword( "f" + index );
 				}
-				if( font.Bold )
-				{
-					myWriter.WriteKeyword("b");
-				}
-				if( font.Italic )
-				{
-					myWriter.WriteKeyword("i");
-				}
-				if( font.Underline )
-				{
-					myWriter.WriteKeyword("ul");
-				}
-				if( font.Strikeout )
-				{
-					myWriter.WriteKeyword("strike");
-				}
-				myWriter.WriteKeyword("fs" + Convert.ToInt32( font.Size * 2 ));
+				//if( font.Bold )
+				//{
+				//	myWriter.WriteKeyword("b");
+				//}
+				//if( font.Italic )
+				//{
+				//	myWriter.WriteKeyword("i");
+				//}
+				//if( font.Underline )
+				//{
+				//	myWriter.WriteKeyword("ul");
+				//}
+				//if( font.Strikeout )
+				//{
+				//	myWriter.WriteKeyword("strike");
+				//}
+				//myWriter.WriteKeyword("fs" + Convert.ToInt32( font.Size * 2 ));
 			}
 		}
 
@@ -947,32 +947,32 @@ namespace RtfDomParser
 		/// <param name="width">pixel width</param>
 		/// <param name="height">pixel height</param>
 		/// <param name="ImageData">image binary data</param>
-		public void WriteImage( System.Drawing.Image img , int width , int height , byte[] ImageData )
+		public void WriteImage(Avalonia.Controls.Image img , int width , int height , byte[] ImageData )
 		{
-			if( this.bolCollectionInfo )
-			{
-				return ;
-			}
-			else
-			{
-				if( ImageData == null )
-					return ;
+			//if( this.bolCollectionInfo )
+			//{
+			//	return ;
+			//}
+			//else
+			//{
+			//	if( ImageData == null )
+			//		return ;
 
-				System.IO.MemoryStream ms = new System.IO.MemoryStream();
-				img.Save( ms , System.Drawing.Imaging.ImageFormat.Jpeg );
-				ms.Close();
-				byte[] bs = ms.ToArray();
-				myWriter.WriteStartGroup();
+			//	System.IO.MemoryStream ms = new System.IO.MemoryStream();
+			//	img.Save( ms , System.Drawing.Imaging.ImageFormat.Jpeg );
+			//	ms.Close();
+			//	byte[] bs = ms.ToArray();
+			//	myWriter.WriteStartGroup();
 				
-				myWriter.WriteKeyword("pict");
-				myWriter.WriteKeyword("jpegblip");
-				myWriter.WriteKeyword("picscalex" + Convert.ToInt32( width * 100.0 / img.Size.Width ));
-				myWriter.WriteKeyword("picscaley" + Convert.ToInt32( height * 100.0 / img.Size.Height ));
-				myWriter.WriteKeyword("picwgoal" + Convert.ToString( img.Size.Width * 15 ));
-				myWriter.WriteKeyword("pichgoal" + Convert.ToString( img.Size.Height * 15 ));
-				myWriter.WriteBytes( bs );
-				myWriter.WriteEndGroup();
-			}
+			//	myWriter.WriteKeyword("pict");
+			//	myWriter.WriteKeyword("jpegblip");
+			//	myWriter.WriteKeyword("picscalex" + Convert.ToInt32( width * 100.0 / img.Size.Width ));
+			//	myWriter.WriteKeyword("picscaley" + Convert.ToInt32( height * 100.0 / img.Size.Height ));
+			//	myWriter.WriteKeyword("picwgoal" + Convert.ToString( img.Size.Width * 15 ));
+			//	myWriter.WriteKeyword("pichgoal" + Convert.ToString( img.Size.Height * 15 ));
+			//	myWriter.WriteBytes( bs );
+			//	myWriter.WriteEndGroup();
+			//}
 		}
 	}
 }

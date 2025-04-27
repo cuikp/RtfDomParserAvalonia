@@ -27,7 +27,7 @@ namespace RtfDomParser
         /// <summary>
         /// 判断对象是否有实际内容
         /// </summary>
-        /// <param name="rootElement">根元素对象</param>
+        /// <param name="rootElement">根元素对蟻E/param>
         /// <returns>是否有实际内容</returns>
         public static bool HasContentElement(RTFDomElement rootElement)
         {
@@ -104,95 +104,96 @@ namespace RtfDomParser
 		/// <returns>
 		/// A string containing the bits of a Windows Metafile in HEX
 		/// </returns>
-		private string GetRtfImage(Image _image) 
+		private string GetRtfImage(Avalonia.Controls.Image _image) 
 		{
 
-			// Ensures that the metafile maintains a 1:1 aspect ratio
-			//const int MM_ISOTROPIC = 7;
+         //// Ensures that the metafile maintains a 1:1 aspect ratio
+         ////const int MM_ISOTROPIC = 7;
 
-			// Allows the x-coordinates and y-coordinates of the metafile to be adjusted
-			// independently
-			const int MM_ANISOTROPIC = 8;
+         //// Allows the x-coordinates and y-coordinates of the metafile to be adjusted
+         //// independently
+         //const int MM_ANISOTROPIC = 8;
 
 
 
-			StringBuilder _rtf = null;
+         //StringBuilder _rtf = null;
 
-			// Used to store the enhanced metafile
-			MemoryStream _stream = null;
+         //// Used to store the enhanced metafile
+         //MemoryStream _stream = null;
 
-			// Used to create the metafile and draw the image
-			Graphics _graphics = null;
+         //// Used to create the metafile and draw the image
+         //Graphics _graphics = null;
 
-			// The enhanced metafile
-			Metafile _metaFile = null;
+         //// The enhanced metafile
+         //Metafile _metaFile = null;
 
-			// Handle to the device context used to create the metafile
-			IntPtr _hdc;
+         //// Handle to the device context used to create the metafile
+         //IntPtr _hdc;
 
-			try 
-			{
-				_rtf = new StringBuilder();
-				_stream = new MemoryStream();
+         //try 
+         //{
+         //	_rtf = new StringBuilder();
+         //	_stream = new MemoryStream();
 
-				// Get a graphics context from the RichTextBox
-				using(_graphics = System.Drawing.Graphics.FromHwnd( new IntPtr( 0 ) ))
-				{
+         //	// Get a graphics context from the RichTextBox
+         //	using(_graphics = System.Drawing.Graphics.FromHwnd( new IntPtr( 0 ) ))
+         //	{
 
-					// Get the device context from the graphics context
-					_hdc = _graphics.GetHdc();
+         //		// Get the device context from the graphics context
+         //		_hdc = _graphics.GetHdc();
 
-					// Create a new Enhanced Metafile from the device context
-					_metaFile = new Metafile(_stream, _hdc);
+         //		// Create a new Enhanced Metafile from the device context
+         //		_metaFile = new Metafile(_stream, _hdc);
 
-					// Release the device context
-					_graphics.ReleaseHdc(_hdc);
-				}
+         //		// Release the device context
+         //		_graphics.ReleaseHdc(_hdc);
+         //	}
 
-				// Get a graphics context from the Enhanced Metafile
-				using(_graphics = Graphics.FromImage(_metaFile)) 
-				{
+         //	// Get a graphics context from the Enhanced Metafile
+         //	using(_graphics = Graphics.FromImage(_metaFile)) 
+         //	{
 
-					// Draw the image on the Enhanced Metafile
-					_graphics.DrawImage(_image, new Rectangle(0, 0, _image.Width, _image.Height));
+         //		// Draw the image on the Enhanced Metafile
+         //		_graphics.DrawImage(_image, new Rectangle(0, 0, _image.Width, _image.Height));
 
-				}
+         //	}
 
-				// Get the handle of the Enhanced Metafile
-				IntPtr _hEmf = _metaFile.GetHenhmetafile();
+         //	// Get the handle of the Enhanced Metafile
+         //	IntPtr _hEmf = _metaFile.GetHenhmetafile();
 
-				// A call to EmfToWmfBits with a null buffer return the size of the
-				// buffer need to store the WMF bits.  Use this to get the buffer
-				// size.
-				uint _bufferSize = GdipEmfToWmfBits(_hEmf, 0, null, MM_ANISOTROPIC,
-					EmfToWmfBitsFlags.EmfToWmfBitsFlagsDefault);
+         //	// A call to EmfToWmfBits with a null buffer return the size of the
+         //	// buffer need to store the WMF bits.  Use this to get the buffer
+         //	// size.
+         //	uint _bufferSize = GdipEmfToWmfBits(_hEmf, 0, null, MM_ANISOTROPIC,
+         //		EmfToWmfBitsFlags.EmfToWmfBitsFlagsDefault);
 
-				// Create an array to hold the bits
-				byte[] _buffer = new byte[_bufferSize];
+         //	// Create an array to hold the bits
+         //	byte[] _buffer = new byte[_bufferSize];
 
-				// A call to EmfToWmfBits with a valid buffer copies the bits into the
-				// buffer an returns the number of bits in the WMF.  
-				uint _convertedSize = GdipEmfToWmfBits(_hEmf, _bufferSize, _buffer, MM_ANISOTROPIC,
-					EmfToWmfBitsFlags.EmfToWmfBitsFlagsDefault);
+         //	// A call to EmfToWmfBits with a valid buffer copies the bits into the
+         //	// buffer an returns the number of bits in the WMF.  
+         //	uint _convertedSize = GdipEmfToWmfBits(_hEmf, _bufferSize, _buffer, MM_ANISOTROPIC,
+         //		EmfToWmfBitsFlags.EmfToWmfBitsFlagsDefault);
 
-				// Append the bits to the RTF string
-				for(int i = 0; i < _buffer.Length; ++i) 
-				{
-					_rtf.Append(String.Format("{0:X2}", _buffer[i]));
-				}
+         //	// Append the bits to the RTF string
+         //	for(int i = 0; i < _buffer.Length; ++i) 
+         //	{
+         //		_rtf.Append(String.Format("{0:X2}", _buffer[i]));
+         //	}
 
-				return _rtf.ToString();
-			}
-			finally 
-			{
-				if(_graphics != null)
-					_graphics.Dispose();
-				if(_metaFile != null)
-					_metaFile.Dispose();
-				if(_stream != null)
-					_stream.Close();
-			}
-		}
+         //	return _rtf.ToString();
+         //}
+         //finally 
+         //{
+         //	if(_graphics != null)
+         //		_graphics.Dispose();
+         //	if(_metaFile != null)
+         //		_metaFile.Dispose();
+         //	if(_stream != null)
+         //		_stream.Close();
+         //}
+         return "";
+      }
   
 
 		private RTFUtil()
