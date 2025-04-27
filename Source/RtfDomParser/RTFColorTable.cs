@@ -139,7 +139,7 @@ namespace RtfDomParser
 			return -1 ;
 		}
 		/// <summary>
-		/// 清空列表
+		/// 清空列眮E
 		/// </summary>
 		public void Clear()
 		{
@@ -154,9 +154,9 @@ namespace RtfDomParser
 		}
 
 		/// <summary>
-		/// 输出颜色表
+		/// 输出颜色眮E
 		/// </summary>
-		/// <param name="writer">RTF文档书写器</param>
+		/// <param name="writer">RTF文档书写苼E/param>
 		public void Write( RTFWriter writer )
 		{
 			writer.WriteStartGroup();
@@ -174,7 +174,7 @@ namespace RtfDomParser
 		}
 
         /// <summary>
-        /// 复制对象
+        /// 复制对蟻E
         /// </summary>
         /// <returns>复制品</returns>
         public RTFColorTable Clone()
