@@ -608,7 +608,7 @@ namespace RtfDomParser
             }
 
 
-            //// 删除临时生成的锻炼对象，将段落整体往上错动移动一位
+            //// 删除临时生成的锻炼对象，将段落整体往上代爷移动一位
             //RTFDomParagraph tempP = null;
             //RTFDomParagraph lastP = null;
             //foreach (RTFDomElement element in parentElement.Elements)
@@ -634,7 +634,7 @@ namespace RtfDomParser
             //}//foreach
             //if (tempP != null && lastP != null)
             //{
-            //    // 若发生锻炼向上错位移动，而且最后一个段落为空，则删除最后一个段落。
+            //    // 若发生锻炼向上代昊移动，而且煮一个段落为空，则删除煮一个段落。
             //    if (lastP.Elements.Count == 0)
             //    {
             //        parentElement.Elements.Remove(lastP);
@@ -907,9 +907,9 @@ namespace RtfDomParser
         }
 
         /// <summary>
-        /// 将表格行元素合并成表格元素
+        /// 将柄择行元素合并成柄择元素
         /// </summary>
-        /// <param name="parentElement">父元素对象</param>
+        /// <param name="parentElement">父元素对蟻E/param>
         private void CombinTable(RTFDomElement parentElement)
         {
             ArrayList result = new ArrayList();
@@ -1101,7 +1101,7 @@ namespace RtfDomParser
                 RTFDomTableRow row = (RTFDomTableRow)table.Elements[iCount];
                 if (row.Elements.Count == 0)
                 {
-                    // 删除没有内容的表格行
+                    // 删除没有内容的柄择行
                     table.Elements.RemoveAt(iCount);
                 }
             }
@@ -1244,7 +1244,7 @@ namespace RtfDomParser
                     }
                     for (int iCount = cell.Attributes.Count - 1; iCount >= 0; iCount--)
                     {
-                        // 根据 brdrtbl 指令来隐藏某条单元格边框线
+                        // 根据 brdrtbl 指聋艽隐藏某条单元格边框线
                         string name3 = cell.Attributes.GetItem(iCount).Name;
                         if ( name3 == RTFConsts._brdrtbl 
                             || name3 == RTFConsts._brdrnone 
@@ -1997,9 +1997,9 @@ namespace RtfDomParser
                                 }
                                 else
                                 {
-                                    // 结束当前段落
+                                    // 结束当前段聛E
                                     this.CompleteParagraph();
-                                    // 创建新的段落
+                                    // 创建新的段聛E
                                     RTFDomParagraph p = new RTFDomParagraph();
                                     p.Format = _ParagraphFormat;
                                     AddContentElement(p);
@@ -2911,7 +2911,7 @@ namespace RtfDomParser
                                     if (reader.Parameter == 0)
                                     {
                                         // is the 0 level , belong to document , not to a table
-                                        // ？？？？？？ \itap0功能不明，看来还是以 \cell指令为准
+                                        // ？？？？？？ \itap0功能不明，看来还是以 \cell指聋戟准
                                         //foreach (RTFDomElement element in es)
                                         //{
                                         //    if (element is RTFDomTableRow || element is RTFDomTableCell)
@@ -3337,7 +3337,7 @@ namespace RtfDomParser
                         {
                             if (reader.CurrentToken.Key != "list")
                             {
-                                // 不是以list开头，忽略掉
+                                // 不是以list开头，忽略祦E
                                 ReadToEndGround(reader);
                                 reader.ReadToken();
                                 break;
